@@ -13,7 +13,7 @@
 	$select = "SELECT * FROM bookAccount WHERE username = '$user'";
 	$results = mysqli_query($conn, $select);
   	if (mysqli_num_rows($results) > 0) {
-  	  header("Location: find_page.html");	
+  	  header("Location: user_home_page.html");	
 	}
 	else {
   	  header("Location: create_page.html");
