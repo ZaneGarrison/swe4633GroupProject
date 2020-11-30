@@ -20,7 +20,7 @@
 		}
 	}
 	else {
-  		header("Location: login_page.html");
+  		header("Location: create_page.html");
   	}
 	
 

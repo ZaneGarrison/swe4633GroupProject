@@ -38,7 +38,8 @@
 	}
 	$insert = "INSERT INTO savedBook (title, publisher, authors, pages, cover, date) VALUES ('$title', '$publisher', '$authors', '$pages', '$cover', '$date')";
 	if (mysqli_query($conn, $insert)) {
-		echo("<a href='book_save.html'>View Saved Books</a>");
+		echo '<script>alert("Book has been saved.")</script>'; 
+		echo "<a href='saved.php'>View Saved Books</a>";
 		echo "<br>";
 		echo "<img src= ".$cover." width = 200 height = 250>";
 		echo "<br>";
@@ -54,8 +55,4 @@
 		
 	}
 	mysqli_close($conn);
-
-
-
-	
  ?>
