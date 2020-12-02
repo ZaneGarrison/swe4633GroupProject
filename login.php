@@ -6,6 +6,13 @@
 	$password ="myawsdatabase20!";
 	$dbname = "studentdb";
 
+//taking username from $user and setting it to the value of the cookie, cookie expires in 30 days
+	$cookie_name = "user";
+	$cookie_value = $user;
+	// 86400 = 1 day
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
+
+
 	$conn = mysqli_connect($host, $username, $password, $dbname);
 	if (mysqli_connect_error()) {
 		die('Failed');
@@ -20,3 +27,19 @@
   	}
 	mysqli_close($conn);
 ?>
+
+<html>
+<body>
+
+<?php
+//this will allow us to check whether the cookie has been set
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
+}
+?>
+
+</body>
+</html>
