@@ -1,19 +1,58 @@
 <?php
-	$user = $_POST["user"];
-	$pass = $_POST["pass"];
-	$host = "database-1.c7mdfiikfgpx.us-east-1.rds.amazonaws.com";
-	$username ="admin";
-	$password ="myawsdatabase20!";
-	$dbname = "studentdb";
-
-	$conn = mysqli_connect($host, $username, $password, $dbname);
-	if (mysqli_connect_error()) {
-		die('Failed');
-	}
-
 	echo "<a href='find_page.html'>Find Book and Save</a><br>";
+	echo "<br>";
+	$url = 'http://localhost:8888/api/commonPublisher.php';
+	$headers = array(  
+		"Content-Type: application/json"
+	);  
+	$rest = curl_init();  
 
-	$mostPages = "SELECT * FROM savedBook WHERE 
+	curl_setopt($rest,CURLOPT_URL,$url);  
+	curl_setopt($rest,CURLOPT_HTTPHEADER,$headers);  
+	curl_setopt($rest,CURLOPT_RETURNTRANSFER, true);  
+
+	$response = curl_exec($rest);
+	$data = json_decode($response);
+	echo "BOOKS WITH COMMON PUBLISHER <br>";
+	print_r($response);
+	
+	/*$title = $data['title'];
+	$publisher = $data['publisher'];
+	$authors = $data['authors'];
+	$pages = $data['pages'];
+	$date = $data['date'];
+	$cover = $data['cover'];*/
+
+	curl_close($rest);
+
+	$url2 = 'http://localhost:8888/api/mostPages.php';
+	$headers = array(  
+		"Content-Type: application/json"
+	);  
+	$rest2 = curl_init();  
+
+	curl_setopt($rest2,CURLOPT_URL,$url2);  
+	curl_setopt($rest2,CURLOPT_HTTPHEADER,$headers);  
+	curl_setopt($rest2,CURLOPT_RETURNTRANSFER, true);  
+
+	$response2 = curl_exec($rest2);
+	$data2 = json_decode($response);
+	echo "<br>";
+	echo "<br>";
+	echo "BOOKS WITH MOST PAGES <br>";
+	print_r($response2);
+	
+	/*$title = $data['title'];
+	$publisher = $data['publisher'];
+	$authors = $data['authors'];
+	$pages = $data['pages'];
+	$date = $data['date'];
+	$cover = $data['cover'];*/
+
+	curl_close($rest2);
+
+
+	/*$mostPages = "SELECT * FROM savedBook WHERE 
  	pages = (SELECT MAX(pages) FROM savedBook)";
  	$result = mysqli_query($conn, $mostPages);
  	if ($row = mysqli_fetch_assoc($result)) {
@@ -41,5 +80,5 @@
  		echo " DATE PUBLISHED: " . $row['date'] . "<br>";
  		echo "<br>";
  	}
-	mysqli_close($conn);
+	mysqli_close($conn);*/
 ?>
