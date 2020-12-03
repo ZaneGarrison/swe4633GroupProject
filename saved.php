@@ -51,6 +51,24 @@
 
 	curl_close($rest2);
 
+$url3 = 'http://localhost:8888/api/usersaved.php';
+$headers = array(
+    "Content-Type: application/json"
+);
+$rest3 = curl_init();
+
+curl_setopt($rest2,CURLOPT_URL,$url3);
+curl_setopt($rest2,CURLOPT_HTTPHEADER,$headers);
+curl_setopt($rest2,CURLOPT_RETURNTRANSFER, true);
+
+$response3 = curl_exec($rest3);
+$data3 = json_decode($response);
+echo "<br>";
+echo "<br>";
+echo "Books Saved By Current User <br>";
+print_r($response3);
+
+curl_close($rest3);
 
 	/*$mostPages = "SELECT * FROM savedBook WHERE 
  	pages = (SELECT MAX(pages) FROM savedBook)";
