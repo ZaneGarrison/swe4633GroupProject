@@ -57,9 +57,9 @@ $headers = array(
 );
 $rest3 = curl_init();
 
-curl_setopt($rest2,CURLOPT_URL,$url3);
-curl_setopt($rest2,CURLOPT_HTTPHEADER,$headers);
-curl_setopt($rest2,CURLOPT_RETURNTRANSFER, true);
+curl_setopt($rest3,CURLOPT_URL,$url3);
+curl_setopt($rest3,CURLOPT_HTTPHEADER,$headers);
+curl_setopt($rest3,CURLOPT_RETURNTRANSFER, true);
 
 $response3 = curl_exec($rest3);
 $data3 = json_decode($response);
