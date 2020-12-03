@@ -51,7 +51,9 @@
 
 	curl_close($rest2);
 
-$url3 = 'http://localhost:8888/api/usersaved.php';
+$currentUsername = $_COOKIE["user"];
+
+$url3 = 'http://localhost:8888/api/usersaved.php?username={$currentUsername}';
 $headers = array(
     "Content-Type: application/json"
 );
