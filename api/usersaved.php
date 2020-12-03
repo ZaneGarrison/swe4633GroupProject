@@ -10,7 +10,7 @@ if (mysqli_connect_error()) {
     die('Failed');
 }
 
-$currentUsername = $_COOKIE["user"];
+$currentUsername = $_GET["userName"]
 
 $userSaved = "SELECT * FROM savedBook WHERE 
  	pages = (SELECT username($currentUsername) FROM savedBook)";
