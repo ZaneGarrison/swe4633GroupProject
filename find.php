@@ -28,10 +28,12 @@ curl_close($rest);
 
 $user = $_POST["user"];
 $pass = $_POST["pass"];
-$host = "database-1.c7mdfiikfgpx.us-east-1.rds.amazonaws.com";
-$username ="admin";
-$password ="myawsdatabase20!";
-$dbname = "studentdb";
+/*
+$host = ;
+$username = ;
+$password =;
+$dbname = ;
+*/
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 if (mysqli_connect_error()) {
